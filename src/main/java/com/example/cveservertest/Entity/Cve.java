@@ -23,11 +23,4 @@ public class Cve {
     @Column
     private String cveUrl;
 
-    public CveDTO convertToCve(Cve cve){
-        CveDTO cveDTO = new CveDTO();
-        cveDTO.setCveId(cve.getCveId());
-        cveDTO.setCveUrl(cve.getCveUrl());
-        return cveDTO;
-    }
-
 }

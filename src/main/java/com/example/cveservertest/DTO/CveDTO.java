@@ -1,16 +1,18 @@
 package com.example.cveservertest.DTO;
 
 import com.example.cveservertest.Entity.Cve;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
-@Data
 public class CveDTO {
     private String cveId;
     private String cveUrl;
+
+    public CveDTO(String cveId, String cveUrl) {
+        this.cveId = cveId;
+        this.cveUrl = cveUrl;
+    }
 
     public Cve convertToCveEntity(){
         Cve cve = new Cve();

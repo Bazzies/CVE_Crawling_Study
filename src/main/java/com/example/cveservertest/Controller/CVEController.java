@@ -1,6 +1,7 @@
 package com.example.cveservertest.Controller;
 
-import com.example.cveservertest.Service.CVEService;
+import com.example.cveservertest.Entity.Cve;
+import com.example.cveservertest.Service.CveService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,10 +13,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CVEController {
 
-    private final CVEService cveService;
+    private final CveService cveService;
 
     @GetMapping("/cve/find")
-    public void saveCVE(@RequestParam List<String> cveId){
-        cveService.getCve(cveId);
+    public List<Cve> saveCVE(@RequestParam List<String> cveId){
+        return cveService.getCve(cveId);
     }
 }
