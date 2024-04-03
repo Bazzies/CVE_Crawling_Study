@@ -6,6 +6,7 @@ import com.example.cveservertest.Repository.CVERepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -28,8 +29,12 @@ public class CveService {
 
         saveNewCves(newCveIds);
 
+        List<Cve> allCves = new ArrayList<>(existingCves);
+        allCves.addAll(findExistingCves(newCveIds)); // 새로 추가된 CVE를 조회하여 추가
+
+        printCveDetails(allCves); // 모든 CVE 출력
+        return allCves;
         //printCveDetails(existingCves);
-        return existingCves;
     }
 
     private List<String> filterValidCveIds(List<String> cveIds) {
