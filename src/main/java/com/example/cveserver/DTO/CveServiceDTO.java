@@ -1,15 +1,15 @@
-package com.example.cveservertest.DTO;
+package com.example.cveserver.DTO;
 
-import com.example.cveservertest.Entity.Cve;
+import com.example.cveserver.Entity.Cve;
 import lombok.*;
 
 @Setter
 @Getter
-public class CveDTO {
+public class CveServiceDTO {
     private String cveId;
     private String cveUrl;
 
-    public CveDTO(String cveId, String cveUrl) {
+    public CveServiceDTO(String cveId, String cveUrl) {
         this.cveId = cveId;
         this.cveUrl = cveUrl;
     }

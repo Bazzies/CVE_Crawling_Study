@@ -1,8 +1,8 @@
-package com.example.cveservertest.Service;
+package com.example.cveserver.Service;
 
-import com.example.cveservertest.DTO.CveDTO;
-import com.example.cveservertest.Entity.Cve;
-import com.example.cveservertest.Repository.CVERepository;
+import com.example.cveserver.DTO.CveServiceDTO;
+import com.example.cveserver.Entity.Cve;
+import com.example.cveserver.Repository.CVERepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +17,7 @@ public class CveService {
     private final CVERepository cveRepository;
 
     public List<Cve> getCve(List<String> cveIds) {
+        //정규 표현식에 맞는지 확인
         List<String> validCveIds = filterValidCveIds(cveIds);
 
         List<Cve> existingCves = findExistingCves(validCveIds);
@@ -55,8 +56,8 @@ public class CveService {
 
     private void saveNewCves(List<String> newCveIds) {
         newCveIds.forEach(cveId -> {
-            CveDTO newCveDTO = new CveDTO(cveId, "https://nvd.nist.gov/vuln/detail/" + cveId);
-            cveRepository.save(newCveDTO.convertToCveEntity());
+            CveServiceDTO newCveServiceDTO = new CveServiceDTO(cveId, "https://nvd.nist.gov/vuln/detail/" + cveId);
+            cveRepository.save(newCveServiceDTO.convertToCveEntity());
             System.out.println("New CVE_ID has been saved.");
         });
     }

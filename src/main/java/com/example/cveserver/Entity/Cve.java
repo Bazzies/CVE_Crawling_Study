@@ -1,11 +1,10 @@
-package com.example.cveservertest.Entity;
+package com.example.cveserver.Entity;
 
 
-import com.example.cveservertest.DTO.CveDTO;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 
 @Getter
 @Setter
